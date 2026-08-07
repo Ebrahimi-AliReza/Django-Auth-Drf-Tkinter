@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'title' %}register{% endblock 'title' %}
+{% block 'content' %}
+
+<body>
+
+    <div style="width:300px; margin:100px auto;">
+        <br>
+        <h1>Register</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="text" name="username" placeholder="Username" style="width:500px; height:35px;">
+            <br><br>
+            <input type="text" name="id_code" placeholder="Id-code" style="width:500px; height:35px;">
+            <br><br>
+            <input type="text" name="phone" placeholder="Phone" style="width:500px; height:35px;">
+            <br><br>
+
+            <input type="email" name="email" placeholder="Email" style="width:500px; height:35px;">
+            <br><br>
+
+            <input type="password" name="password1" placeholder="Password" style="width:500px; height:35px;">
+            <br><br>
+
+            <input type="password" name="password2" placeholder="Confirm Password" style="width:500px; height:35px;">
+            <br><br>
+
+            <button type="submit" style="width:100px; height:35px;">Register</button>
+
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %} 
+        <br>
+        <p>Already have an account? <a href="{% url 'accounts:login' %}">Login here</a></p>
+
+
+    </div>
+
+</body>
+
+{% endblock 'content' %}
+
+
+

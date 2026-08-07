@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'title' %}
+properties AliReza
+{% endblock 'title' %}
+{% block 'content' %}
+
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Properties</h1>
+              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Properties</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Real Estate Section -->
+    <section id="real-estate" class="real-estate section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+
+          {% for pro in properties  %}
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card">
+              <img src="{{pro.image1.url}}" alt="" class="img-fluid">
+              <div class="card-body">
+                <span class="sale-rent">{{pro.position.title}} | ${{pro.price}}</span>
+                <h3><a href="{% url 'properties:single' id=pro.id %}" class="stretched-link">{{pro.title}}</a></h3>
+                <div class="card-content d-flex flex-column justify-content-center text-center">
+                  <div class="row propery-info">
+                    <div class="col">متراژ</div>
+                    <div class="col">اتاق خواب</div>
+                    <div class="col">حمام</div>
+                    <div class="col">گاراژ</div>
+                  </div>
+                  <div class="row">
+                    <div class="col">{{pro.area}}</div>
+                    <div class="col">{{pro.beds}}</div>
+                    <div class="col">{{pro.bath}}</div>
+                    <div class="col">{{pro.garage}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Property Item -->
+          {% endfor %}
+
+
+        </div>
+
+      </div>
+
+    </section><!-- /Real Estate Section -->
+
+  </main>
+
+{% endblock 'content' %}

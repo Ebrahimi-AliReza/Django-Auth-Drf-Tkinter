@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'title' %}login{% endblock 'title' %}
+{% block 'content' %}
+
+<body>
+
+    <div style="width:300px; margin:100px auto;">
+        <br><br>
+        <h1>Login</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="text" name="email" placeholder="Your_email" style="width:500px; height:35px;">
+            <br><br>
+
+            <input type="password" name="password" placeholder="Password" style="width:500px; height:35px;">
+            <br><br>
+
+            <button type="submit" style="width:100px; height:35px;">Login</button>
+            <br><br>
+
+            <p>Don't have an account? <a href="{% url 'accounts:register' %}">Register here</a></p>
+            <p>Forgot Your Password ? <a href="{% url 'accounts:reset-password' %}">Click here</a></p>
+
+        </form>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %} 
+
+    </div>
+
+</body>
+
+
+{% endblock 'content' %}
+
+
+
