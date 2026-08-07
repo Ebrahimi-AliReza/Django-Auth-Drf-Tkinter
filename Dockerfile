@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # فقط شماره پورت را اکسپوز می‌کنیم
-EXPOSE 8000
+#EXPOSE 8000
 
 # دستور نهایی برای اجرای برنامه (مثال برای جنگو یا فست‌آپی)
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
