@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'properties',
     'accounts',
     'rest_framework.authtoken',
+    "rest_framework",
     
 ]
 
