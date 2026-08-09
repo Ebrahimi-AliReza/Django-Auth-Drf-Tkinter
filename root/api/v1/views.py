@@ -1,20 +1,24 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
 from rest_framework.response import Response
-from .serializers import InfoSerializers
+from .serializers import ServiceSerializers,CategorySerializers
+from services.models import Services,Category
+from rest_framework import status
+from rest_framework.permissions import IsAdminUser
 
 
 
 
 @api_view()
-def test(request):
-    return Response({'name':'alireza',
-                     'family':'ebrahimi'} )
+def last_services(request):
+    last_three_service=Services.objects.all().order_by('-created_at')[:3]
+    serializer=ServiceSerializers(last_three_service , many=True)
+    return Response(serializer.data , status=status.HTTP_200_OK )
     
     
-    
-@api_view(['POST','UPDATE'])
-def test2(request):
-    info={'name':'alireza',
-                     'family':'ebrahimi'}
-    serializer=InfoSerializers(info)
-    return Response(serializer.data )
+ 
+@api_view()
+@permission_classes([IsAdminUser])  
+def categories(request):
+    categories=Category.objects.all()
+    serializer=CategorySerializers(categories , many=True)
+    return Response(serializer.data , status=status.HTTP_200_OK )

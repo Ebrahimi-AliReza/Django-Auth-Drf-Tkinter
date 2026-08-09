@@ -7,7 +7,7 @@ from .views import *
 
 
 urlpatterns = [
-    path("test/", test, name="test"),
-    path("test2/", test2, name="test2"),
+    path("last_services/", last_services, name="last_services"),
+    path("categories/", categories, name="categories"),
 
 ]
