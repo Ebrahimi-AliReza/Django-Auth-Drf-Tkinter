@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     "root",
     'services',
     'properties',
@@ -172,3 +173,10 @@ AUTH_USER_MODEL='accounts.User'
 #     BASE_DIR.joinpath("static"),
 #     BASE_DIR.joinpath("media")
 # ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
