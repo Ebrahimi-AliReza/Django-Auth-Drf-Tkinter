@@ -15,7 +15,7 @@ from rest_framework.viewsets import ModelViewSet
 
 class ServicesView(ModelViewSet):
     serializer_class=ServicesSerializers
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
     queryset=Services.objects.all()
 
 # class ServicesListView(ListAPIView, ListCreateAPIView):
